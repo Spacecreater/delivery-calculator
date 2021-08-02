@@ -64,17 +64,17 @@ require_once __DIR__ . '/../app/functions.php';
         <div class="col-md-6 offset-md-3">
             <?php   if(empty($_POST["rawsTypesIndex"])) {
                         $rwtpErr = "Выберите тип сырья";
-                    }else {
+                    } else {
                         $rwtp = test_input($_POST["rawsTypesIndex"]);
 
                     if(empty($_POST["tonnagesIndex"])) {
                         $toniErr = "Выберите тоннаж";
-                    }else {
+                    } else {
                         $toni = test_input($_POST["tonnagesIndex"]);
 
                     if(empty($_POST["monthIndex"])) {
                         $moniErr = "Выберите месяц";
-                    }else {
+                    } else {
                         $moni = test_input($_POST["monthIndex"]); ?>
 
                     <form method="post" actions = "" id="form" class="needs-validation mt-5 mb-5" novalidate>
@@ -102,7 +102,10 @@ require_once __DIR__ . '/../app/functions.php';
 
                     </form>
 
-            <?php };};}; ?>
+                        <?php 
+                    };
+                    };
+                    }; ?>
 
         </div>
     </div>
@@ -112,17 +115,17 @@ require_once __DIR__ . '/../app/functions.php';
 
 <?php if(empty($_POST["rawsTypesIndex"])) {
         $rwtpErr = "Выберите тип сырья";
-    }else {
+    } else {
         $rwtp = test_input($_POST["rawsTypesIndex"]);
 
     if(empty($_POST["tonnagesIndex"])) {
         $toniErr = "Выберите тоннаж";
-    }else {
+    } else {
         $toni = test_input($_POST["tonnagesIndex"]);
 
     if(empty($_POST["monthIndex"])) {
         $moniErr = "Выберите месяц";
-    }else {
+    } else {
         $moni = test_input($_POST["monthIndex"]); ?>
 
             <form method="post" actions = "" id="form" class="needs-validation mt-5 mb-5" novalidate>
@@ -130,8 +133,9 @@ require_once __DIR__ . '/../app/functions.php';
 
                     <table class="table">
                         <?php echo "<th>Месяц</th>"; ?>
-                            <?php foreach($month as $key){     
-                                echo "<th rowspan=2>" . $key . "</th>"; };?>
+                            <?php foreach($month as $key) {     
+                                echo "<th rowspan=2>" . $key . "</th>"; 
+                                };?>
                                 <tr>
                                     <th>Тоннаж</th>
                                 </tr>
@@ -149,7 +153,10 @@ require_once __DIR__ . '/../app/functions.php';
 
             </form>
 
-<?php };};}; ?>           
+    <?php 
+    };
+    };
+    }; ?>           
 </div>
 </div>
 </body>
