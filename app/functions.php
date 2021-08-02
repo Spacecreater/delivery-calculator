@@ -18,13 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(empty($_POST["monthIndex"])) {
         $moniErr = "Выберите месяц";
-    }else {
+    } else {
         $moni = test_input($_POST["monthIndex"]);
     }
 };
 
-function test_input($data) 
-{
+function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
