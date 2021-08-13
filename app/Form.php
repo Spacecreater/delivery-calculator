@@ -30,7 +30,7 @@ class Form
         6 => 'Ноябрь',
         
     ];
-
+    
     public $attributes = [
         'rawsTypes' => null,
         'tonnages' => null,
@@ -69,37 +69,9 @@ class Form
         return $this->rawsTypes;
     }
 
-    public function hasRawTypesError()
-    {
-        if (empty($attributes['rawsTypes'])) {
-            return $this->errors['rawsTypes'];
-        } else {
-            return false;
-        }
-    }
-    
-    public function printRawTypesError()
-    {
-        echo $this->errors['rawsTypes'];
-    }
-
     public function getTonnages()
     {
         return $this->tonnages;
-    }
-
-    public function hasTonnageError()
-    {
-        if (empty($attributes['tonnages'])) {
-            return $this->errors['tonnages'];
-        } else {
-            return false;
-        }
-    }
-
-    public function printTonnageError()
-    {
-        echo $this->errors['tonnages'];
     }
 
     public function getMonth()
@@ -107,20 +79,34 @@ class Form
         return $this->month;
     }
 
+    public function hasRawTypesError()
+    {
+        return ! empty($this->errors['rawsTypes']);
+    }
+
+    public function hasTonnageError()
+    {
+        return ! empty($this->errors['tonnages']);
+    }
+
     public function hasMonthError()
     {
-        if (empty($attributes['month'])) {
-            return $this->errors['month'];
-        } else {
-            return false;
-        }
+        return ! empty($this->errors['month']);
+    }
+    
+    public function printRawTypesError()
+    {
+        return $this->errors['rawsTypes'];
+    }
+
+    public function printTonnageError()
+    {
+        return $this->errors['tonnages'];
     }
 
     public function printMonthError()
     {
-        echo $this->errors['month'];
+        return $this->errors['month'];
     }
     
 }
-
-$form = new Form();
