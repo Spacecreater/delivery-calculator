@@ -4,7 +4,7 @@ class Form
 {
 
     public $rawsTypes = [
-        null => 'Выберите тип сырья',
+        0 => 'Выберите тип сырья',
         1 => 'Шрот',
         2 => 'Жмых',
         3 => 'Соя',
@@ -12,7 +12,7 @@ class Form
     ];
 
     public $tonnages = [
-        null => 'Выберите тоннаж',
+        0 => 'Выберите тоннаж',
         1 => '25',
         2 => '50',
         3 => '75',
@@ -21,7 +21,7 @@ class Form
     ];
     
     public $month = [
-        null => 'Выберите месяц',
+        0 => 'Выберите месяц',
         1 => 'Январь',
         2 => 'Февраль',
         3 => 'Август',
@@ -51,15 +51,15 @@ class Form
 
     public function validate()
     {
-        if ($this->attributes['rawsTypes'] == null) {
+        if ($this->attributes['rawsTypes'] === 'Выберите тип сырья') {
             $this->errors['rawsTypes'] = "Необходимо заполнить тип сырья";
         }
 
-        if ($this->attributes['tonnages'] == null) {
+        if ($this->attributes['tonnages'] === 'Выберите тоннаж') {
             $this->errors['tonnages'] = "Необходимо заполнить тоннаж";
         }
 
-        if ($this->attributes['month'] == null) {
+        if ($this->attributes['month'] === 'Выберите месяц') {
             $this->errors['month'] = "Необходимо заполнить месяц";
         }
     }
