@@ -4,7 +4,7 @@ require_once __DIR__ . '/../app/Form.php';
 require_once __DIR__ . '/../app/DeliveryCalculator.php';
 
 $form = new Form();
-$dc = new DeliveryCalculator($form);
+$calculator = new DeliveryCalculator($form);
 
 if ($_POST['submit']) {
     $form->load($_POST);
@@ -20,8 +20,8 @@ if ($_POST['submit']) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>GRUZPRO</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="three"><h1>Расчет стоимости доставки грузоперевозки</h1></div>
@@ -112,31 +112,37 @@ if ($_POST['submit']) {
         <div class="col-md-6 offset-md-3">
             <form method="post" actions = "" id="form" class="needs-validation mt-5 mb-5" novalidate>
 
-                <?php if (! empty($form->errors)) {
-                    return false; 
-                    } ?>
+                <?php if (empty($form->errors)): ?>
+                    
+                    <p>
+                        <div class="result" style="text-align: center;">Результаты расчета</div>
+                    </p>
 
-                        <p><div class="result" style="text-align: center;">Результаты расчета</div></p>
+                    <table class="table">
 
-                            <table class="table">
-                                <tr>
-                                    <td rowspan="4" style="text-align:center">Параметры расчета</td>
-                                    <td>Месяц</td>
-                                    <td><?php echo $form->attributes['month'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Тип сырья</td>
-                                    <td><?php echo $form->attributes['rawsTypes']?></td>
-                                </tr>
-                                <tr>
-                                    <td>Тоннаж</td>
-                                    <td><?php echo $form->attributes['tonnages']?></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" style="text-align:right"><b>Стоимость грузоперевозки: 
-                                    <?php echo $dc->result();?> тыс.рублей</b></td>
-                                </tr>
-                            </table>
+                        <tr>
+                            <td rowspan="4" style="text-align:center">Параметры расчета</td>
+                            <td>Месяц</td>
+                            <td><?= $form->attributes['month'] ?></td>
+                        </tr>
+
+                        <tr>
+                            <td>Тип сырья</td>
+                            <td><?= $form->attributes['rawsTypes'] ?></td>
+                        </tr>
+
+                        <tr>
+                            <td>Тоннаж</td>
+                            <td><?= $form->attributes['tonnages'] ?></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" style="text-align:right"><b>Стоимость грузоперевозки: <?= $calculator->result(); ?> тыс.рублей</b></td>
+                        </tr>
+
+                    </table>
+
+                <?php endif ?>
 
             </form>
 
@@ -147,34 +153,47 @@ if ($_POST['submit']) {
 <div class="container">
     <form method="post" actions = "" id="form" class="needs-validation mt-5 mb-5" novalidate>
 
-        <?php if (! empty($form->errors)) {
-            return false; 
-            } ?>
+        <?php if (empty($form->errors)): ?>
 
-                <p><div class="result" style="text-align: center;">Таблица по которой производились подсчеты</div></p>
+            <p>
+                <div class="result" style="text-align: center;">Таблица по которой производились подсчеты</div>
+            </p>
 
-                    <table class="table">
-                        <th>Месяц</th>
-                            <?php foreach ($dc->month as $key => $val) {
-                                if ($key != 0)
-                                echo "<th rowspan=2>" . $val . "</th>";
-                                }; ?>
-                                <tr>
-                                    <th>Тоннаж</th>
-                                </tr>
-                                <tr>
-                                <?php foreach ($dc->prices[$dc->keysRawsTypes] as $key => $values): {
-                                            echo "<tr>";
-                                            echo "<td>" . "<b>". $dc->tonnages[$key] ."</b>" . "</td>";
-                                        foreach ($values as $massiv) {
-                                            echo "<td>" . $massiv . "</td>";
-                                        };
-                                    }; ?>
-                                <?php endforeach; ?>
-                                </tr>
-                    </table>
+            <table class="table">
+                
+                <th>Месяц</th>
 
-            </form>
+                <?php foreach ($calculator->month as $key => $val): ?>
+                    <?php if ($key != 0): ?>
+
+                        <th rowspan=2><?= $val ?></th>
+
+                    <?php endif ?>
+
+                <?php endforeach ?>
+
+                <tr>
+                    <th>Тоннаж</th>
+                </tr>
+
+                <?php foreach ($calculator->prices[$calculator->keysRawsTypes] as $key => $values): ?>
+                    <tr>
+                        <td><b><?= $calculator->tonnages[$key] ?></b></td>
+
+                        <?php foreach ($values as $massiv): ?>
+                            <td><?= $massiv ?></td>
+
+                        <?php endforeach ?>
+
+                    </tr>
+
+                <?php endforeach ?>
+
+            </table>
+                
+        <?php endif ?>
+
+    </form>
 
 </div>
 

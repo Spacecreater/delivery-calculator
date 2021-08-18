@@ -148,7 +148,7 @@ class DeliveryCalculator
 
     public function result()
     {
-        if (! empty($this->form->attributes["rawsTypes"]) && ! empty($this->form->attributes["tonnages"]) && ! empty($this->form->attributes["month"])){
+        if (! empty($this->form->attributes["rawsTypes"]) && ! empty($this->form->attributes["tonnages"]) && ! empty($this->form->attributes["month"])) {
             $this->keysRawsTypes = $keysRawsTypes = array_search($this->form->attributes['rawsTypes'], $this->rawsTypes);
             $keysTonnages = array_search($this->form->attributes['tonnages'], $this->tonnages);
             $keysMonth = array_search($this->form->attributes['month'], $this->month);
