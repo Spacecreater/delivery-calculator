@@ -2,35 +2,7 @@
 
 class DeliveryCalculator
 {
-
-    public $rawsTypes = [
-        0 => 'Выберите тип сырья',
-        1 => 'Шрот',
-        2 => 'Жмых',
-        3 => 'Соя',
     
-    ];
-
-    public $tonnages = [
-        0 => 'Выберите тоннаж',
-        1 => '25',
-        2 => '50',
-        3 => '75',
-        4 => '100',
-        
-    ];
-    
-    public $month = [
-        0 => 'Выберите месяц',
-        1 => 'Январь',
-        2 => 'Февраль',
-        3 => 'Август',
-        4 => 'Сентябрь',
-        5 => 'Октябрь',
-        6 => 'Ноябрь',
-        
-    ];
-
     public $prices = [
         1 => [
             1 => [
@@ -146,9 +118,9 @@ class DeliveryCalculator
 
     public function result()
     {
-        $this->keysRawsTypes = array_search($this->form->attributes['rawsTypes'], $this->rawsTypes);
-        $keysTonnages = array_search($this->form->attributes['tonnages'], $this->tonnages);
-        $keysMonth = array_search($this->form->attributes['month'], $this->month);
+        $this->keysRawsTypes = array_search($this->form->attributes['rawsTypes'], $this->form->rawsTypes);
+        $keysTonnages = array_search($this->form->attributes['tonnages'], $this->form->tonnages);
+        $keysMonth = array_search($this->form->attributes['month'], $this->form->month);
         
         return $this->prices[$this->keysRawsTypes][$keysTonnages][$keysMonth];
     }
