@@ -137,8 +137,6 @@ class DeliveryCalculator
             
     ];
     
-    public $keysRawsTypes;
-
     public $form;
 
     public function __construct($form)
@@ -148,13 +146,11 @@ class DeliveryCalculator
 
     public function result()
     {
-        if (! empty($this->form->attributes["rawsTypes"]) && ! empty($this->form->attributes["tonnages"]) && ! empty($this->form->attributes["month"])) {
-            $this->keysRawsTypes = $keysRawsTypes = array_search($this->form->attributes['rawsTypes'], $this->rawsTypes);
-            $keysTonnages = array_search($this->form->attributes['tonnages'], $this->tonnages);
-            $keysMonth = array_search($this->form->attributes['month'], $this->month);
-        }
+        $this->keysRawsTypes = array_search($this->form->attributes['rawsTypes'], $this->rawsTypes);
+        $keysTonnages = array_search($this->form->attributes['tonnages'], $this->tonnages);
+        $keysMonth = array_search($this->form->attributes['month'], $this->month);
         
-        return $this->prices[$keysRawsTypes][$keysTonnages][$keysMonth];
+        return $this->prices[$this->keysRawsTypes][$keysTonnages][$keysMonth];
     }
 
 }
