@@ -2,7 +2,7 @@
 
 class Form 
 {
-
+    
     public $rawsTypes = [
         0 => 'Выберите тип сырья',
         1 => 'Шрот',

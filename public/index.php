@@ -162,7 +162,7 @@ if ($_POST['submit']) {
                             
                             <th>Месяц</th>
 
-                            <?php foreach ($calculator->month as $key => $val): ?>
+                            <?php foreach ($form->month as $key => $val): ?>
                                 <?php if ($key != 0): ?>
 
                                     <th rowspan=2><?= $val ?></th>
@@ -177,7 +177,7 @@ if ($_POST['submit']) {
 
                             <?php foreach ($calculator->prices[$calculator->keysRawsTypes] as $key => $values): ?>
                                 <tr>
-                                    <td><b><?= $calculator->tonnages[$key] ?></b></td>
+                                    <td><b><?= $form->tonnages[$key] ?></b></td>
 
                                     <?php foreach ($values as $massiv): ?>
                                         <td><?= $massiv ?></td>
