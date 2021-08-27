@@ -42,10 +42,10 @@ if ($_POST['submit']) {
 
                                 <?php endif;?>
 
-                                <select class="custom-select" type= "text" name="rawsTypes" required>
+                                <select class="custom-select" type= "text" name="<?= $form->getRawTypesAttributeName() ?>" required>
 
                                     <?php foreach ($form->getRawTypes() as $key => $type): ?>
-                                        <option value='<?= $type ?>' <?php if ($key === $form->rawsTypes): echo 'selected'; endif ?>><?= $type ?></option>
+                                        <option value='<?= $key ?>' <?php if ($key === $form->rawsTypes): echo 'selected'; endif ?>><?= $type ?></option>
                                     <?php endforeach ?>
 
                                 </select>
@@ -64,10 +64,10 @@ if ($_POST['submit']) {
 
                                 <?php endif;?>
 
-                                <select class="custom-select" type= "text" name="tonnages" required>
+                                <select class="custom-select" type= "text" name="<?= $form->getTonnageAttributeName() ?>" required>
 
                                     <?php foreach ($form->getTonnages() as $key => $type): ?>
-                                        <option value='<?= $type ?>' <?php if ($key === $form->tonnages): echo 'selected'; endif ?>><?= $type ?></option>
+                                        <option value='<?= $key ?>' <?php if ($key === $form->tonnages): echo 'selected'; endif ?>><?= $type ?></option>
                                     <?php endforeach ?>
 
                                 </select>
@@ -86,10 +86,10 @@ if ($_POST['submit']) {
 
                                 <?php endif;?>
 
-                                <select class="custom-select" type= "text" name="month" required>
+                                <select class="custom-select" type= "text" name="<?= $form->getMonthAttributeName() ?>" required>
 
                                     <?php foreach ($form->getMonth() as $key => $type): ?>
-                                        <option value='<?= $type ?>' <?php if ($key === $form->month): echo 'selected'; endif ?>><?= $type ?></option>
+                                        <option value='<?= $key ?>' <?php if ($key === $form->month): echo 'selected'; endif ?>><?= $type ?></option>
                                     <?php endforeach ?>
 
                                 </select>
@@ -122,17 +122,17 @@ if ($_POST['submit']) {
                                     <tr>
                                         <td rowspan="4" style="text-align:center">Параметры расчета</td>
                                         <td>Месяц</td>
-                                        <td><?= $form->attributes['month'] ?></td>
+                                        <td><?= $form->printMonthName() ?></td>
                                     </tr>
 
                                     <tr>
                                         <td>Тип сырья</td>
-                                        <td><?= $form->attributes['rawsTypes'] ?></td>
+                                        <td><?= $form->printRawsTypesName() ?></td>
                                     </tr>
 
                                     <tr>
                                         <td>Тоннаж</td>
-                                        <td><?= $form->attributes['tonnages'] ?></td>
+                                        <td><?= $form->printTonnagesName() ?></td>
                                     </tr>
 
                                     <tr>

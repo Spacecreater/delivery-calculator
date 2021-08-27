@@ -2,7 +2,7 @@
 
 class DeliveryCalculator
 {
-    
+
     public $prices = [
         1 => [
             1 => [
@@ -118,9 +118,9 @@ class DeliveryCalculator
 
     public function result()
     {
-        $this->keysRawsTypes = array_search($this->form->attributes['rawsTypes'], $this->form->rawsTypes);
-        $keysTonnages = array_search($this->form->attributes['tonnages'], $this->form->tonnages);
-        $keysMonth = array_search($this->form->attributes['month'], $this->form->month);
+        $this->keysRawsTypes = $this->form->attributes['rawsTypes'];
+        $keysTonnages = $this->form->attributes['tonnages'];
+        $keysMonth = $this->form->attributes['month'];
         
         return $this->prices[$this->keysRawsTypes][$keysTonnages][$keysMonth];
     }
