@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Form\Form;
-use App\DeliveryCalculator\DeliveryCalculator;
+use App\Delivery_Calculator\DeliveryCalculator;
 
 $form = new Form();
 $calculator = new DeliveryCalculator($form);

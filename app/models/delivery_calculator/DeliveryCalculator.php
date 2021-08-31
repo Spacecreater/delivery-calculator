@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DeliveryCalculator;
+namespace app\delivery_calculator;
 
 class DeliveryCalculator
 {
