@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace app\form;
 use \Exception;
 
 class Form 
