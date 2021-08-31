@@ -1,7 +1,9 @@
 <?php
 
-require_once __DIR__ . '/../app/Form.php';
-require_once __DIR__ . '/../app/DeliveryCalculator.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Form\Form;
+use App\DeliveryCalculator\DeliveryCalculator;
 
 $form = new Form();
 $calculator = new DeliveryCalculator($form);
