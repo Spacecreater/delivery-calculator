@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Form;
+use \Exception;
+
 class Form 
 {
 
