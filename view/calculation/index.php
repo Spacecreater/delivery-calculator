@@ -1,17 +1,3 @@
-<?php
-
-use app\models\form\Form;
-use app\models\delivery_calculator\DeliveryCalculator;
-
-$form = new Form();
-$calculator = new DeliveryCalculator($form);
-
-if ($_POST['submit']) {
-    $form->load($_POST);
-    $form->validate();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
