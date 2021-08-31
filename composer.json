@@ -6,7 +6,9 @@
             "email": "hirikomu@yandex.ru"
         }
     ],
-    "require": {},
+    "require": {
+        "laminas/laminas-diactoros": "^2.6"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "src/App"
