@@ -4,12 +4,17 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use app\models\form\Form;
 use app\models\delivery_calculator\DeliveryCalculator;
+use Laminas\Diactoros\ServerRequestFactory;
+
+$request = ServerRequestFactory::fromGlobals();
 
 $form = new Form();
 $calculator = new DeliveryCalculator($form);
 
-if ($_POST['submit']) {
-    $form->load($_POST);
+$requests = $request->getParsedBody();
+
+if ($requests['submit']) {
+    $form->load($requests);
     $form->validate();
 }
 
