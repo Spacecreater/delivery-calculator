@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+    <article class="wrapper">
     <div class="three"><h1>Расчет стоимости доставки грузоперевозки</h1></div>
         <div class="container1">
             <div class="container">
@@ -84,7 +85,7 @@
 
                         </p>
 
-                            <button type="submit" name ="submit" class="btn btn-primary btn-lg btn-block" value="submit">Рассчитать</button>
+                            <button type="submit" name ="submit" class="btn btn-secondary btn-lg btn-block" value="submit">Рассчитать</button>
 
                         </form>
 
@@ -181,6 +182,8 @@
                 </form>
 
             </div>
-
+            
+        </article>
+        
     </body>
 </html>

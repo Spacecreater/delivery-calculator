@@ -5,6 +5,9 @@ namespace app\models\delivery_calculator;
 class DeliveryCalculator
 {
 
+    /**
+     * @var array
+     */
     public $prices = [
         1 => [
             1 => [
@@ -111,14 +114,17 @@ class DeliveryCalculator
             
     ];
     
-    public $form;
+    private $form;
 
     public function __construct($form)
     {
         $this->form = $form;
     }
 
-    public function result()
+    /**
+     * @return string
+     */
+    public function result(): string
     {
         $this->keysRawsTypes = $this->form->attributes['rawsTypes'];
         $keysTonnages = $this->form->attributes['tonnages'];

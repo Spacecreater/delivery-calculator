@@ -2,11 +2,15 @@ body {
   background-color: #ffffff;
 } 
 
+.custom-select {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 select {
   width: 176px;
   border-style: solid;
   border-radius: 5px;
-  border: 2px solid #3587f1;
+  border: 2px solid black;
 }
 
 #form{
@@ -19,58 +23,25 @@ select {
 }
 
 .container {
+  position: static;
   
-  border-style: solid;
-  border-radius: 5px;
-  border: 2px solid #f3f3f3;
 }
 
 .container1 {
-  background-color: #f3f3f3;
-  max-width: 1200px;
+  position: static;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 900px;
   margin: 0 auto;
   border-style: solid;
   border-radius: 5px;
   border: 2px solid #c0cef5;
 }
 
-.three {
-  background: #ffffff;
-  padding: 50px 20px;
-  text-align: center;
-} 
 .three h1 {
   font-family: 'Merriweather', serif;
-  position: relative;
-  color: #FCF2E5;
-  background: #64a1f0;
+  position: absolute; top: 3px; left: 500px;
+  color: white;
   font-size: 2.5em;
-  font-weight: normal;
-  padding: 10px 40px;
-  display: inline-block;
-  margin: 0;
-  line-height: 1;
-}
-.three h1:before {
-  content: ""; 
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  left: 0;
-  bottom: -15px;
-  background: #3587f1;
-}
-.three h1:after {
-  content: ""; 
-  position: absolute;
-  height: 0;
-  width: 80%;
-  border-top: 10px solid #64a1f0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -25px;
 }
 
 .result {
@@ -78,19 +49,57 @@ select {
 }
 
 .table {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.3);
 	width: 100%;
-	margin-bottom: 20px;
-	border: 2px solid #3587f1;
+	border: 2px solid black;
 	border-collapse: collapse; 
 }
 .table th {
 	font-weight: bold;
 	padding: 5px;
-	background: #ebebeb;
-	border: 1px solid #3587f1;
+	background: rgba(255, 255, 255, 0.3);;
+	border: 1px solid black;
 }
 .table td {
-	border: 1px solid #3587f1;
+	border: 1px solid black;
 	padding: 5px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+
+body {
+  background: #fff;
+}
+
+.wrapper {
+  animation: scroll 70s linear infinite;
+  background: url("https://images.unsplash.com/photo-1465146633011-14f8e0781093?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"), #111111;
+  color: #eee;
+  height: 1100px;
+  min-width: 360px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  
+}
+
+@keyframes scroll {
+   100%{
+    background-position:0px -3000px;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .wrapper {
+    animation: scroll 200s linear infinite;
+  }
+}
+
+@media (min-width: 670px) {
+  .title {
+    font-size: 5rem;
+  }
 }
