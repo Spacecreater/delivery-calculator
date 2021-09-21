@@ -5,7 +5,9 @@ use \Exception;
 
 class Form 
 {
-
+    /**
+     * @var array
+     */
     public $rawsTypes = [
         null => 'Выберите тип сырья',
         1 => 'Шрот',
@@ -14,15 +16,21 @@ class Form
     
     ];
 
+    /**
+     * @var array
+     */
     public $tonnages = [
         null => 'Выберите тоннаж',
         1 => '25',
         2 => '50',
         3 => '75',
         4 => '100',
-        
+    
     ];
 
+    /**
+     * @var array
+     */
     public $month = [
         null => 'Выберите месяц',
         1 => 'Январь',
@@ -34,15 +42,25 @@ class Form
         
     ];
 
+    /**
+     * @var array
+     */
     public $attributes = [
         'rawsTypes' => null,
         'tonnages' => null,
         'month' => null,
     ];
 
+    /**
+     * @var array
+     */
     public $errors = [];
 
-    public function load($attributes)
+    /**
+     * @param array $attributes
+     * @return void
+     */
+    public function load(array $attributes): void
     {
         foreach ($attributes as $key => $value) {
             if (array_key_exists($key, $this->attributes)) {
@@ -51,10 +69,13 @@ class Form
         }
     }
 
-    public function rules()
+    /**
+     * @return array
+     */
+    private function rules(): array
     {
         return [
-            'rawsTypes' => function ($key) {
+            'rawsTypes' => function (string $key): void {
                 if (! array_key_exists($key, $this->attributes)) {
                     throw new Exception('Отсутвует обязательное поле - тип сырья');
                 }
@@ -64,7 +85,7 @@ class Form
                 }
             },
 
-            'tonnages' => function ($key) {
+            'tonnages' => function (string $key): void {
                 if (! array_key_exists($key, $this->attributes)) {
                     throw new Exception('Отсутвует обязательное поле - тоннаж');
                 }
@@ -74,7 +95,7 @@ class Form
                 }
             },
 
-            'month' => function ($key) {
+            'month' => function (string $key): void {
                 if (! array_key_exists($key, $this->attributes)) {
                     throw new Exception('Отсутвует обязательное поле - месяц');
                 }
@@ -84,10 +105,12 @@ class Form
                 }
             },
         ];
-
     }
-
-    public function validate()
+    
+    /**
+     * @return void
+     */
+    public function validate(): void
     {
         foreach ($this->rules() as $key => $value) {
             try {
@@ -98,77 +121,123 @@ class Form
         }
     }
 
-    public function getRawTypes()
+    /**
+     * @return string
+     */
+    public function getRawTypes(): string
     {
         return $this->rawsTypes;
     }
 
-    public function getTonnages()
+    /**
+     * @return string
+     */
+    public function getTonnages(): string
     {
         return $this->tonnages;
     }
 
-    public function getMonth()
+    /**
+     * @return string
+     */
+    public function getMonth(): string
     {
         return $this->month;
     }
 
-    public function getRawTypesAttributeName()
+    /**
+     * @return string
+     */
+    public function getRawTypesAttributeName(): string
     {
         return 'rawsTypes';
     }
 
-    public function getTonnageAttributeName()
+    /**
+     * @return string
+     */
+    public function getTonnageAttributeName(): string
     {
         return 'tonnages';
     }
 
-    public function getMonthAttributeName()
+    /**
+     * @return string
+     */
+    public function getMonthAttributeName(): string
     {
         return 'month';
     }
 
-    public function hasRawTypesError()
+    /**
+     * @return bool
+     */
+    public function hasRawTypesError(): bool
     {
         return ! empty($this->errors);
     }
 
-    public function hasTonnageError()
+    /**
+     * @return bool
+     */
+    public function hasTonnageError(): bool
     {
         return ! empty($this->errors);
     }
 
-    public function hasMonthError()
+    /**
+     * @return bool
+     */
+    public function hasMonthError(): bool
     {
         return ! empty($this->errors);
     }
-    
-    public function printRawTypesError()
+
+    /**
+     * Печать ошибки
+     * @return string
+     */
+    public function printRawTypesError(): string
     {
         return $this->errors['rawsTypes'];
     }
 
-    public function printTonnageError()
+    /**
+     * @return string
+     */
+    public function printTonnageError(): string
     {
         return $this->errors['tonnages'];
     }
 
-    public function printMonthError()
+    /**
+     * @return string
+     */
+    public function printMonthError(): string
     {
         return $this->errors['month'];
     }
 
-    public function printRawsTypesName()
+    /**
+     * @return string
+     */
+    public function printRawsTypesName(): string
     {
         return $this->rawsTypes[$this->attributes['rawsTypes']];
     }
 
-    public function printTonnagesName()
+    /**
+     * @return string
+     */
+    public function printTonnagesName(): string
     {
         return $this->tonnages[$this->attributes['tonnages']];
     }
 
-    public function printMonthName()
+    /**
+     * @return string
+     */
+    public function printMonthName(): string
     {
         return $this->month[$this->attributes['month']];
     }
